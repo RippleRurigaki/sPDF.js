@@ -2,9 +2,11 @@
   "name": "spdf",
   "version": "0.1.0",
   "description": "",
-  "main": "index.js",
+  "main": "dist/index.js",
+  "types": "src/index.ts",
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "build": "npx tsc --build ."
   },
   "repository": {
     "type": "git",
@@ -22,9 +24,8 @@
     "crypto-js": "^4.1.1",
     "jsrsasign": "^10.6.1",
     "pdf-lib": "^1.17.1",
-    "saslprep": "^1.0.3"
-  },
-  "devDependencies": {
+    "saslprep": "^1.0.3",
+    "typescript": "^5.2.2",
     "@types/crypto-js": "^4.1.1",
     "@types/saslprep": "^1.0.1"
   }

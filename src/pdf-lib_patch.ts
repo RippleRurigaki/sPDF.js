@@ -333,12 +333,18 @@ const pdf_lib_Patch = {
                         //Skip SignContents
                         continue;
                     }
-                    if(value[1] instanceof PDFString){
+                    if(value[1] instanceof PDFString) {
                         const valueBuffer = value[1].asBytes();
                         const data = decrypter(valueBuffer,ref.objectNumber,ref.generationNumber);
                         //@ts-ignore ,
-                        value[1].value = buffer2Str(data);
-                    }
+                        if (value[0].asString() === '/Cert') {
+                            //@ts-ignore ,
+                            object.set(PDFName.of("Cert"),new PDFHexString(buffer2Hex(data)));
+                        } else {
+                            //@ts-ignore ,
+                            value[1].value = buffer2Str(data);
+                        }
+                    } else 
                     if(value[1] instanceof PDFHexString){
                         const valueBuffer = value[1].asBytes();
                         const data = decrypter(valueBuffer,ref.objectNumber,ref.generationNumber);
